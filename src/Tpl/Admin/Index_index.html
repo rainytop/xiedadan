@@ -182,6 +182,35 @@
                             </ul>
                         </li>
                     </in>
+
+                    <in name="crm" value="$crmoath">
+                        <li>
+                            <a href="#" class="menu-dropdown">
+                                <i class="menu-icon glyphicon glyphicon-gift"></i>
+                                <span class="menu-text"> 客户管理 </span>
+                                <i class="menu-expand"></i>
+                            </a>
+                            <ul class="submenu">
+                                <li>
+                                    <a href="{:U('Admin/Crm/import')}" data-loader="App-loader" data-loadername="导入客户">
+                                        <span class="menu-text">导入客户</span>
+                                    </a>
+                                </li>
+                                <li>
+                                    <a href="{:U('Admin/Crm/export')}" data-loader="App-loader" data-loadername="导出客户">
+                                        <span class="menu-text">导出客户</span>
+                                    </a>
+                                </li>
+                                <li>
+                                    <a href="{:U('Admin/Crm/index')}" data-loader="App-loader" data-loadername="客户列表">
+                                        <span class="menu-text">客户列表</span>
+                                    </a>
+                                </li>
+
+                            </ul>
+                        </li>
+                    </in>
+
                     <in name="wx" value="$useroath">
                         <!--微信管理-->
                         <li>
@@ -602,6 +631,8 @@
                             </ul>
                         </li>
                     </in>
+
+
 
                     <notin name="employee" value="$useroath">
                         <li>

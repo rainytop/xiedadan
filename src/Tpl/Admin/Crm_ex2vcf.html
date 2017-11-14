@@ -2,15 +2,15 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>Title</title>
+    <title>导出客户信息为vcf</title>
 
 </head>
 <body>
 <form method="post" action="{:U('')}" enctype='multipart/form-data'>
-请选择EMS给的每日excel表格：<br/>
-    <input type="file" name="originalFile"><br/>
-    请输入过滤后的tps表格上的CD快递单号列表：<br/>
-    <textarea name="yundanhao"></textarea><br/>
+请输入要导出数据的开始id和结束id：<br/>
+    开始id：<input type="text" name="beginNo"><br/>
+    结束id：<input type="text" name="endNo"><br/>
+
     <button type="submit" class="weui-btn weui-btn_mini weui-btn_primary">生成</button>
 </form>
 </body>

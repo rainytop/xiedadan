@@ -7,10 +7,11 @@
 </head>
 <body>
 <form method="post" action="{:U('')}" enctype='multipart/form-data'>
-请选择EMS给的每日excel表格：<br/>
-    <input type="file" name="originalFile"><br/>
-    请输入过滤后的tps表格上的CD快递单号列表：<br/>
-    <textarea name="yundanhao"></textarea><br/>
+
+单号(待查数据)<br/>
+    <textarea name="ourhao"></textarea><br/>
+    单号（被命中集）<br/>
+    <textarea name="emshao"></textarea><br/>
     <button type="submit" class="weui-btn weui-btn_mini weui-btn_primary">生成</button>
 </form>
 </body>

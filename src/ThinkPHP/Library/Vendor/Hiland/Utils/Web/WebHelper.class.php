@@ -1,4 +1,5 @@
 <?php
+
 namespace Vendor\Hiland\Utils\Web;
 
 use Vendor\Hiland\Utils\Data\StringHelper;
@@ -10,18 +11,53 @@ use Vendor\Hiland\Utils\Data\StringHelper;
 class WebHelper
 {
 
+//    /**
+//     * 下载文件
+//     *
+//     * @param string $filename
+//     *            带全路径的文件
+//     */
+//    public static function download($filename)
+//    {
+//        header('Content-Type:' . MimeHelper::getMime($filename));
+//        header('Content-Disposition: attachment; filename=' . $filename);
+//        header('Content-Length:' . filesize($filename));
+//        readfile($filename);
+//    }
+
     /**
      * 下载文件
-     *
-     * @param string $filename
-     *            带全路径的文件
+     * 说明 Controller的Action方法中，调用本方法后不能再出现 dump(); display();这样的向浏览器页面刷信息的方法。
+     * @param mixed $data 可以是带全路径的文件名称，也可以数组，字符串或者内存数据流
+     * @param string $newFileName 在客户浏览器弹出下载对话框中显示的默认文件名
      */
-    public static function download($filename)
+    public static function download($data, $newFileName = null)
     {
-        header('Content-Type:' . MimeHelper::getMime($filename));
-        header('Content-Disposition: attachment; filename=' . $filename);
-        header('Content-Length:' . filesize($filename));
-        readfile($filename);
+        header("Expires: 0");
+        header("Cache-Control:must-revalidate,post-check=0,pre-check=0");
+        header("Pragma:public");
+
+        if (is_file($data)) {
+            if (empty($newFileName)) {
+                $newFileName = $data;
+            }
+
+            header('Content-Type:' . MimeHelper::getMime($data));
+            header('Content-Disposition: attachment; filename=' . $newFileName);
+            header('Content-Length:' . filesize($data));
+
+            readfile($data);
+        } else {
+            if (empty($newFileName)) {
+                $newFileName = date("YmdHis");
+            }
+
+            header("Content-type:application/octet-stream");
+            header("Accept-Ranges:bytes");
+            header("Content-Disposition:attachment;filename=$newFileName");
+
+            file_put_contents("php://output", $data);
+        }
     }
 
     /**
